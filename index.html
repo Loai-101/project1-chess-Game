@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="pieces.js" defer></script>
+    <script src="app.js" defer></script>
+    <title>GA Chess Game</title>
+</head>
+<body>
+    <h1>GA Chess Game</h1>
+
+    <div id="players-names">
+        <label for="player1-name"> first player Name:</label>
+        <input type="text" id="player1-name" placeholder="Enter your name">
+        <br>
+        <label for="player2-name">second player Name:</label>
+        <input type="text" id="player2-name" placeholder="Enter your name">
+    </div>
+    <button id="start-game">Start Game</button>
+    
+    <div id="game-board"></div>
+   
+    <p>It is <span id="turn"></span>'s turn</p>
+    <div id="score"></div>
+        <h2 id="player1-score">0</h2>
+        <h2 id="player2-score">0</h2>
+    </div>
+    <button id="reset">Reset</button>
+</body>
+</html>
