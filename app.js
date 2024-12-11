@@ -1,19 +1,12 @@
 // call the elements from the html
-const startGameButton = document.getElementById("start-game");
-const player1NameInput = document.getElementById("player1-name");
-const player2NameInput = document.getElementById("player2-name");
-const gameBoard = document.getElementById("game-board");
-const score = document.getElementById("score");
-const player1Score = document.getElementById("player1-score");
-const player2Score = document.getElementById("player2-score");
-const turn = document.getElementById("turn");
-const resetButton = document.getElementById("reset");
-
+const gameBoard = document.getElementById("gameboard");
+const playerDisplay = document.getElementById("player");
+const infoDisplay = document.getElementById("info-display");
 
 // create the game board
 const width = 8;
 let playerGo = 'black'
-
+playerDisplay.textContent = 'blacks'
 
 const startPieces = [
     rook,knight,bishop,queen,king,bishop,knight,rook,
@@ -61,7 +54,7 @@ createBoard();
 
 
 // here i code the squares draggable
-const allSquares = document.querySelectorAll('#game-board .square')
+const allSquares = document.querySelectorAll('.square')
 // here i add the event listener to the squares
 allSquares.forEach(square => {
     square.addEventListener('dragstart', dragStart)
@@ -73,8 +66,9 @@ let startPositionId
 let draggedElement
 // here i create the dragStart & dragEnd functions
 function dragStart(e) {
-    startPositionId= e.target.parentNode.getAttribute('square-id')
+    startPositionId = e.target.closest('.square').getAttribute('squareid')
     draggedElement = e.target
+    console.log('Start position:', startPositionId)
 }
 // here i create the dragOver function
 function dragOver(e) {
@@ -85,10 +79,113 @@ function dragOver(e) {
 
 function dragDrop(e) {
     e.stopPropagation()
-    console.log(e.target)
+    const target = e.target.classList.contains('square') ? e.target : e.target.closest('.square')
+    const correctGo = draggedElement.firstChild.classList.contains(playerGo)
     const taken = e.target.classList.contains('piece')
+    const valid = checkValid(target)
+    const opponent = playerGo === 'white' ? 'black' : 'white'
+    const takenByOpponent = e.target.firstChild?.classList.contains(opponent)
 
-   // e.target.parentNode.append(draggedElement)
-   //e.target.append(draggedElement)
+    console.log('Drop target square:', target.getAttribute('squareid'))
+    if(correctGo){
+        if(takenByOpponent && valid){
+            e.target.parentNode.append(draggedElement)
+            e.target.remove()
+            changePlayer()
+            return
+        }
+        
+        if(taken && !takenByOpponent){
+            if (infoDisplay) {
+                infoDisplay.textContent = 'you cannot go here'
+                setTimeout(() => {
+                    infoDisplay.textContent = ''
+                }, 2000)
+            }
+            return
+        }
+        
+        if(valid){
+            e.target.append(draggedElement)
+            changePlayer()
+            return
+        }
+    } 
+}
+
+function checkValid(target){
+   const targetId = Number(target.getAttribute('squareid'))
+   const startId = Number(startPositionId)
+   const piece = draggedElement.id
+
+   console.log('Move from:', startId, 'to:', targetId)
+   console.log('Piece:', piece)
+   // here i use switch statements to check the piece and the move
+   // i use if statements to check the piece and the move
+   // i use case statements to give the piece the correct move
+   switch(piece){
+    case 'pawn':
+        const startRow = [8,9,10,11,12,13,14,15]
+        if(
+            startRow.includes(startId) && startId + width * 2 === targetId ||
+            startId + width === targetId ||
+            startId + width - 1 === targetId && document.querySelector(`[square-id="${startId + width - 1}"]`).firstChild ||
+            startId + width + 1 === targetId && document.querySelector(`[square-id="${startId + width + 1}"]`).firstChild
+        ) {
+            return true
+        }
+        break;
+        case 'knight':
+            if(
+                startId + width * 2 + 1 === targetId ||
+                startId + width * 2 - 1 === targetId ||
+                startId + width - 2 === targetId ||
+                startId + width + 2 === targetId ||
+                startId - width * 2 + 1 === targetId ||
+                startId - width * 2 - 1 === targetId ||
+                startId - width - 2 === targetId ||
+                startId - width + 2 === targetId
+            ) {
+                return true
+            }
+            break;
+   }
+   return false
+} 
+
+
+
+
+
+
+
+
+
+
+// here i create the changePlayer function
+// i use if statements to check if the player is black or white and if it is, i change the player to the other color
+function changePlayer() {
+   if (playerGo === 'black') {
+    reversIds()
+    playerGo = 'white' 
+    playerDisplay.textContent = 'white'
+   } else {
+    reversIds()
+    playerGo = 'black'
+    playerDisplay.textContent = 'black'
+   }
+}
+// here i create the reversId function
+// i use a for loop to reverse the id of the squares
+function reversIds() {
+   const allSquares = document.querySelectorAll('.square')
+   allSquares.forEach((square, i) => {
+    square.setAttribute('square-id', (width * width -1) - i)
+   })
+}
+
+function reversIds() {
+    const allSquares = document.querySelectorAll('.square')
+    allSquares.forEach((square, i) => square.setAttribute('square-id', i))
 }
 
