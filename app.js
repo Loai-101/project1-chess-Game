@@ -3,6 +3,7 @@ const gameBoard = document.getElementById("gameboard");
 const playerDisplay = document.getElementById("player");
 const infoDisplay = document.getElementById("info-display");
 const winnerDisplay = document.getElementById("winner");
+const resetButton = document.getElementById("reset");
 
 // create the game board
 const width = 8;
@@ -84,6 +85,11 @@ function dragOver(e) {
 function dragDrop(e) {
     e.stopPropagation()
     
+    // If game is already over, prevent any moves
+    if (gameBoard.classList.contains('game-over')) {
+        return
+    }
+    
     // Fix target selection
     const target = e.target.classList.contains('square') ? e.target : e.target.parentNode
     
@@ -107,8 +113,10 @@ function dragDrop(e) {
         }
 
         if(taken && !takenByOpponent){
-            infoDisplay.textContent = 'you cannot go here'
-            setTimeout(() => infoDisplay.textContent = '', 2000)
+            if (infoDisplay) {
+                infoDisplay.textContent = 'you cannot go here'
+                setTimeout(() => infoDisplay.textContent = '', 2000)
+            }
             return
         }
 
@@ -376,13 +384,106 @@ function reverseIds() {
 }
 // here i create the checkForWin function
 function checkForWin() {
-    const kings = Array.from(document.querySelectorAll('#king'))
-    console.log(kings)
-    if (!kings.some(king => king.firstChild.classList.contains('white'))) {
-        winner.textContent = 'black player wins'
-    }
-    if (!kings.some(king => king.firstChild.classList.contains('black'))) {
-        winner.textContent = 'white player wins'
-    }
+    return endGame()
 }
+
+// here i create the reset function
+// i use the reset button to reset the game
+function reset() {
+    // Clear the game board
+    if (gameBoard) {
+        gameBoard.innerHTML = '';
+    }
+    
+    // Reset displays - add null checks
+    if (winner) {
+        winner.textContent = '';
+    }
+    if (infoDisplay) {
+        infoDisplay.textContent = '';
+    }
+    
+    playerGo = 'black';
+    if (playerDisplay) {
+        playerDisplay.textContent = 'blacks';
+    }
+    
+    // Recreate the board with initial pieces
+    createBoard();
+    
+    // Reattach event listeners to the new squares
+    const allSquares = document.querySelectorAll('.square');
+    allSquares.forEach(square => {
+        square.addEventListener('dragstart', dragStart);
+        square.addEventListener('dragover', dragOver);
+        square.addEventListener('drop', dragDrop);
+        square.addEventListener('dragend', (e) => {
+            e.preventDefault();
+        });
+    });
+}
+
+// Make sure the reset button exists before adding the event listener
+if (resetButton) {
+    resetButton.addEventListener('click', reset);
+}
+
+function endGame() {
+    const kings = Array.from(document.querySelectorAll('#king'))
+    
+    function freezeBoard() {
+        // Remove all event listeners from squares
+        const allSquares = document.querySelectorAll('.square')
+        allSquares.forEach(square => {
+            square.removeEventListener('dragstart', dragStart)
+            square.removeEventListener('dragover', dragOver)
+            square.removeEventListener('drop', dragDrop)
+        })
+        
+        // Disable dragging on all pieces
+        const allPieces = document.querySelectorAll('.square div')
+        allPieces.forEach(piece => {
+            if (piece) {
+                piece.setAttribute('draggable', false)
+            }
+        })
+        
+        // Disable the entire board
+        if (gameBoard) {
+            gameBoard.style.pointerEvents = 'none'
+            gameBoard.classList.add('game-over')
+        }
+        
+        // Update player display
+        if (playerDisplay) {
+            playerDisplay.textContent = 'Game Over'
+        }
+    }
+    
+    if (!kings.some(king => king.firstChild?.classList.contains('white'))) {
+        if (winner) {
+            winner.textContent = 'Black Player Wins!'
+        }
+        if (infoDisplay) {
+            infoDisplay.textContent = 'Game Over - Click Reset to Play Again'
+        }
+        freezeBoard()
+        return true
+    }
+    
+    if (!kings.some(king => king.firstChild?.classList.contains('black'))) {
+        if (winner) {
+            winner.textContent = 'White Player Wins!'
+        }
+        if (infoDisplay) {
+            infoDisplay.textContent = 'Game Over - Click Reset to Play Again'
+        }
+        freezeBoard()
+        return true
+    }
+    
+    return false
+}
+
+
 
