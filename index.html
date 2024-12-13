@@ -10,12 +10,34 @@
     <title>GA Chess Game</title>
 </head>
 <body>
-    <h1>GA Chess Game</h1>
-    <div id="gameboard"></div>
-    <p>It is <span id="player"></span> 's go.</p>
-    <p id=" info-display"></p> 
-    <p id="winner"></p>
-    <button id="reset">Reset Game</button>
+    <h1 id="title">GA Chess Game</h1>
+    <div id="links-list">
+        <nav>
+            <a href="https://youtu.be/OCSbzArwB10" style="color: #f8f8f8;">video to learn chess</a>
+        </nav>
+        <nav>
+            <a href="https://www.chess.com/lessons" style="color: #f8f8f8;">chess lessons</a>
+        </nav>
+    </div>
+    <div id="player-info">
+        <nav>
+            <label for="player">black team player:</label>
+            <input type="text" id="player" name="player" placeholder="Enter your name">
+        </nav>
+        <p id="vs">vs</p>
+        <nav>
+            <label for="player">white team player:</label>
+            <input type="text" id="player" name="player" placeholder="Enter your name">
+        </nav>
+       
+    </div>
     
+    <div id="gameboard"></div>
+    <div id="game-info">
+        <p id="game-info-text">It is <span id="player"></span> 's go.</p>
+        <p id=" info-display"></p> 
+        <p id="winner"></p>
+        <button id="reset">Reset Game</button>
+    </div>
 </body>
 </html>

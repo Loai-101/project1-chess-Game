@@ -1,15 +1,92 @@
+*{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+body{
+    background-image: url(https://cdn.gencraft.com/prod/user/3500cf6b-064c-44d6-8892-ac9416f22f84/2044a00c-5faf-49c9-a160-4333047412f6/image/image1_0.jpg?Expires=1734189723&Signature=SEkwCL9KpU9u51ZhNwi~7pMF3bdyRvddLo8DTx0Y4QfdsWnce4ypl5SHrJPnSyEZLSoCz~Tq3aV2FBaWeBLGS2Sb6miEvsp0Ah9~hyROvMZrkx5iT7Q7s-cKjJQFFhImugRTUG8s9MznAkvGoplu4kqTdVy5-vo7nhGY2--WNaZcPY3Oed3FGbnQLLpPesQmarZRrGdh9m2QIzBvKv5bEXw56sw~x3CyWS~o~kBKoDLIEiTs3XVeiELtTyArxym2oQgT-w5BnWGXhUPLQu6Kf7KbahDc0ejrNURcrAIwAyOsovmbt8k~85DKnSSABw3GJo46udD1KzEKZJiuU7l9bQ__&Key-Pair-Id=K3RDDB1TZ8BHT8);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 5px solid #cecec9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 10px;
+    margin-top: 20px;
+    padding: 10px;
+}
+#title{
+    text-align: center;
+    color: #f8f8f8;
+    border: 5px solid #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-top: 20px;
+
+    padding: 10px;
+    
+}
+#title:hover{
+    background-color: #f8f8f8;
+    color: #131413;
+}
+label{
+    color: #f8f8f8;
+}
+p{
+    color: #050505;
+}
+#game-info-text{
+    border: 5px solid #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
 #gameboard{
     width: 320px;
     height: 320px;
     background-color: #131413;
     display: flex;
     flex-wrap: wrap;
+    margin: 5px;
+    border: 5px solid #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-top: 20px;
 }
-
+#player-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+    align-items: center;;
+}
+#vs{
+    color: #f8f8f8;
+    font-size: 70px;
+}
+#vs:hover{
+    color: #e80808;
+}
+#game-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 5px;
+    gap: 20px;
+    align-items: center;
+}
 .square {
     width: 40px;
     height: 40px;
     position: relative;
+}
+.square:hover{
+    background-color: #4ba3e6;
 }
 .square svg {
     width: 30px;
@@ -42,5 +119,25 @@ path {
 .white {
     fill:rgb(255, 255, 255);
 }
+
+#links-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 5px solid #f8f8f8;
+    background-color: #a0b5a0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+}
+#links-list nav{
+    margin: 10px;
+}
+
 
 
