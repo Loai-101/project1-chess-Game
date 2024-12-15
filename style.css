@@ -1,23 +1,25 @@
+
 *{
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body{
-    background-image: url(https://cdn.gencraft.com/prod/user/3500cf6b-064c-44d6-8892-ac9416f22f84/2044a00c-5faf-49c9-a160-4333047412f6/image/image1_0.jpg?Expires=1734189723&Signature=SEkwCL9KpU9u51ZhNwi~7pMF3bdyRvddLo8DTx0Y4QfdsWnce4ypl5SHrJPnSyEZLSoCz~Tq3aV2FBaWeBLGS2Sb6miEvsp0Ah9~hyROvMZrkx5iT7Q7s-cKjJQFFhImugRTUG8s9MznAkvGoplu4kqTdVy5-vo7nhGY2--WNaZcPY3Oed3FGbnQLLpPesQmarZRrGdh9m2QIzBvKv5bEXw56sw~x3CyWS~o~kBKoDLIEiTs3XVeiELtTyArxym2oQgT-w5BnWGXhUPLQu6Kf7KbahDc0ejrNURcrAIwAyOsovmbt8k~85DKnSSABw3GJo46udD1KzEKZJiuU7l9bQ__&Key-Pair-Id=K3RDDB1TZ8BHT8);
+    background-image: url(https://img.freepik.com/free-vector/gradient-chess-background_23-2151085416.jpg?t=st=1734263686~exp=1734267286~hmac=85588a00a360cf59c3c5652f2944d7d9eaa7d1bfa93dc53b69e8550e734c3ffd&w=996);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border: 5px solid #cecec9;
+    border: 5px solid #ef7c08;
+    box-shadow: 0 0 10px 0 rgba(245, 238, 238, 0.5);
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 0 rgba(250, 8, 8, 0.5);
     margin: 10px;
     margin-top: 20px;
     padding: 10px;
 }
 #title{
     text-align: center;
-    color: #f8f8f8;
-    border: 5px solid #f8f8f8;
+    color: #e64040;
+    border: 5px solid #e05c5c;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -27,17 +29,19 @@ body{
     
 }
 #title:hover{
-    background-color: #f8f8f8;
+    background-color: #ec1313;
     color: #131413;
 }
 label{
-    color: #f8f8f8;
+    color: #e70c0c;
+    font-size: 20px;
+    font-weight: bold;
 }
 p{
     color: #050505;
 }
 #game-info-text{
-    border: 5px solid #f8f8f8;
+    border: 5px solid #ed1616;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -52,7 +56,7 @@ p{
     display: flex;
     flex-wrap: wrap;
     margin: 5px;
-    border: 5px solid #f8f8f8;
+    border: 5px solid #ee0505;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: 0 auto;
@@ -66,7 +70,7 @@ p{
     align-items: center;;
 }
 #vs{
-    color: #f8f8f8;
+    color: #f5e90a;
     font-size: 70px;
 }
 #vs:hover{
@@ -99,6 +103,8 @@ path {
     position: relative;
     z-index: -9;
 }
+
+
 .piece {
     position: relative;
     z-index: 9;
@@ -128,7 +134,7 @@ path {
     border: 5px solid #f8f8f8;
     background-color: #a0b5a0;
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px 0 rgba(241, 7, 7, 0.5);
     margin: 0 auto;
     margin-top: 20px;
     margin-left: 20px;
