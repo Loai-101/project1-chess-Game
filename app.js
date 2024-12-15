@@ -117,6 +117,16 @@ function dragDrop(e) {
         }
     }
 }
+// here i create the updatePlayerDisplay function
+function updatePlayerDisplay() {
+    if (playerDisplay) {
+        if (playerGo === 'black') {
+            playerDisplay.textContent = blackPlayerName + "'s turn";
+        } else {
+            playerDisplay.textContent = whitePlayerName + "'s turn";
+        }
+    }
+}
 // here i create the checkValid function
     function checkValid(target){
         const targetId = Number(target.getAttribute('squareid'))
@@ -366,28 +376,28 @@ function dragDrop(e) {
     i use if statements to check if the player is black or white and if it is, i change the player to the other player
     i also change the id of the squares to the other player
     */
-function changePlayer() {
-    if (playerGo === 'black') {
-        reverseIds()
-        playerGo = 'white' 
-        playerDisplay.textContent = 'white'
-    } else {
-        reverseIds()
-        playerGo = 'black'
-        playerDisplay.textContent = 'black'
-    }
-    // here i check if the piece is the same color as the player and if it is, i make the piece draggable
-    document.querySelectorAll('.square').forEach(square => {
-        const piece = square.firstChild
-        if (piece) {
-            if (piece.firstChild?.classList.contains(playerGo)) {
-                piece.setAttribute('draggable', true)
-            } else {
-                piece.setAttribute('draggable', false)
-            }
+    function changePlayer() {
+        if (playerGo === 'black') {
+            reverseIds()
+            playerGo = 'white' 
+        } else {
+            reverseIds()
+            playerGo = 'black'
         }
-    })
-}
+        updatePlayerDisplay(); // Update the player display with the current player's name
+    
+        // here i check if the piece is the same color as the player and if it is, i make the piece draggable
+        document.querySelectorAll('.square').forEach(square => {
+            const piece = square.firstChild
+            if (piece) {
+                if (piece.firstChild?.classList.contains(playerGo)) {
+                    piece.setAttribute('draggable', true)
+                } else {
+                    piece.setAttribute('draggable', false)
+                }
+            }
+        })
+    }
 /* 
     here i create the reverseIds function
     i use a for loop to reverse the id of the squares
@@ -506,4 +516,41 @@ function endGame() {
     return false
 }
 
+// here i create the submitPlayer1 and submitPlayer2 functions
+// i use the submit button to submit the player name
+// i use the input value to get the player name
+// i use the player display to display the player name
+// i use the input value to get the player name
+// i use the input value to get the player name
+const submitPlayer1 = document.querySelector("#submit-player1");
+const submitPlayer2 = document.querySelector("#submit-player2");
+const player1Element = document.querySelector("#player1-display");
+const player2Element = document.querySelector("#player2-display");
+const inputValue1 = document.querySelector("#player1");
+const inputValue2 = document.querySelector("#player2");
+
+// Initialize player names
+let blackPlayerName = "Black Player";
+let whitePlayerName = "White Player";
+
+// Add event listeners for player name submission
+if (submitPlayer1 && inputValue1 && player1Element) {
+    submitPlayer1.addEventListener("click", () => {
+        if (inputValue1.value.trim() !== "") {
+            blackPlayerName = inputValue1.value;
+            player1Element.textContent = `Black Player: ${blackPlayerName}`;
+            updatePlayerDisplay(); // Update the main player display
+        }
+    });
+}
+
+if (submitPlayer2 && inputValue2 && player2Element) {
+    submitPlayer2.addEventListener("click", () => {
+        if (inputValue2.value.trim() !== "") {
+            whitePlayerName = inputValue2.value;
+            player2Element.textContent = `White Player: ${whitePlayerName}`;
+            updatePlayerDisplay(); // Update the main player display
+        }
+    });
+}
 

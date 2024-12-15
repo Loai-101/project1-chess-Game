@@ -1,10 +1,10 @@
-
+/* here i set the font family */
 *{
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
-
+/* here i set the background image */ 
 body{
-    background-image: url(https://img.freepik.com/free-vector/gradient-chess-background_23-2151085416.jpg?t=st=1734263686~exp=1734267286~hmac=85588a00a360cf59c3c5652f2944d7d9eaa7d1bfa93dc53b69e8550e734c3ffd&w=996);
+    background-image: url(https://freedesignfile.com/upload/2018/01/International-chess-background-design-vector-01.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,6 +16,7 @@ body{
     margin-top: 20px;
     padding: 10px;
 }
+/* here i set the title */
 #title{
     text-align: center;
     color: #e64040;
@@ -24,22 +25,25 @@ body{
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
     margin: 0 auto;
     margin-top: 20px;
-
     padding: 10px;
     
 }
+/* here i set the title hover */
 #title:hover{
     background-color: #ec1313;
     color: #131413;
 }
+/* here i set the label */
 label{
     color: #e70c0c;
     font-size: 20px;
     font-weight: bold;
 }
+/* here i set the p */
 p{
     color: #050505;
 }
+/* here i set the game info text */
 #game-info-text{
     border: 5px solid #ed1616;
     border-radius: 10px;
@@ -49,6 +53,7 @@ p{
     padding: 10px;
 }
 
+/* here i set the game board */
 #gameboard{
     width: 320px;
     height: 320px;
@@ -62,20 +67,18 @@ p{
     margin: 0 auto;
     margin-top: 20px;
 }
-#player-info{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    margin: 10px;
-    align-items: center;;
-}
+/* here i set the vs */
 #vs{
-    color: #f5e90a;
-    font-size: 70px;
+    color: #f50a0a;
+    font-size: 120px;
+    margin: 0 auto;
+   
 }
+/* here i set the vs hover */
 #vs:hover{
-    color: #e80808;
+    color: #080808;
 }
+/* here i set the game info */
 #game-info{
     display: flex;
     flex-direction: column;
@@ -84,14 +87,17 @@ p{
     gap: 20px;
     align-items: center;
 }
+/* here i set the square */
 .square {
     width: 40px;
     height: 40px;
     position: relative;
 }
+/* here i set the square hover */
 .square:hover{
     background-color: #4ba3e6;
 }
+/* here i set the square svg */
 .square svg {
     width: 30px;
     height: 30px;
@@ -99,33 +105,33 @@ p{
     position: relative;
     z-index: -9;
 }
+/* here i set the path */
 path {
     position: relative;
     z-index: -9;
 }
-
-
+/* here i set the piece */
 .piece {
     position: relative;
     z-index: 9;
 }
-
+/* here i set the beige */
 .beige {
     background-color: #e59b23;
 }
-
+/* here i set the brown */
 .brown {
     background-color: #e47012;
 }
-
+/* here i set the black */
 .black {
     fill:rgb(28, 28, 28);
 }
-
+/* here i set the white */
 .white {
     fill:rgb(255, 255, 255);
 }
-
+/* here i set the links list */
 #links-list{
     display: flex;
     flex-direction: row;
@@ -141,8 +147,46 @@ path {
     margin-right: 20px;
     padding: 10px;
 }
+/* here i set the links list nav */
 #links-list nav{
     margin: 10px;
+}
+/* here i set the player inputs */
+.player-inputs {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+/* here i set the player 1 section */
+.player1-section, .player2-section {
+    text-align: center;
+}
+/* here i set the input */
+input[type="text"] {
+    padding: 5px;
+    margin: 5px;
+    border: 5px solid #f63838;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(244, 5, 5, 0.5);
+}
+/* here i set the button */
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    cursor: pointer;
+    border: 5px solid #6105f6;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(116, 71, 230, 0.5);
+}
+/* here i set the player 1 display */
+#player1-display, #player2-display {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #050505;
+    border: 5px solid #f63838;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(244, 5, 5, 0.5);
+    padding: 10px;
 }
 
 

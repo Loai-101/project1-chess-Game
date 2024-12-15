@@ -10,7 +10,9 @@
     <title>GA Chess Game</title>
 </head>
 <body>
+    <!-- title -->
     <h1 id="title">GA Chess Game</h1>
+    <!-- links -->
     <div id="links-list">
         <nav>
             <a href="https://youtu.be/OCSbzArwB10" style="color: #f8f8f8;">video to learn chess</a>
@@ -19,20 +21,26 @@
             <a href="https://www.chess.com/lessons" style="color: #f8f8f8;">chess lessons</a>
         </nav>
     </div>
-    <div id="player-info">
-        <nav>
-            <label for="player">black team player:</label>
-            <input type="text" id="player" name="player" placeholder="Enter your name">
-        </nav>
-        <p id="vs">vs</p>
-        <nav>
-            <label for="player">white team player:</label>
-            <input type="text" id="player" name="player" placeholder="Enter your name">
-        </nav>
-       
+    <!-- player info -->
+    <div class="player-inputs">
+        <div class="player1-section">
+            <input type="text" id="player1" placeholder="Enter Black Player Name">
+        <button id="submit-player1">Submit Black Player</button>
+        <div id="player1-display"></div>
+    </div>
+    <nav>
+        <div id="vs">vs</div>
+    </nav>
+    <div class="player2-section">
+        <input type="text" id="player2" placeholder="Enter White Player Name">
+        <button id="submit-player2">Submit White Player</button>
+        <div id="player2-display"></div>
+    </div>
     </div>
     
+    <!-- game board -->
     <div id="gameboard"></div>
+    <!-- game info -->
     <div id="game-info">
         <p id="game-info-text">It is <span id="player"></span> 's go.</p>
         <p id=" info-display"></p> 
